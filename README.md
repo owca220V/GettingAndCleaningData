@@ -10,6 +10,6 @@ The run_analysis.R script assumes the orginal data set has been downloaded, extr
 
 `HAR_data` contains the mean and standard deviation for each measurement (each record corresponds to one observation window of one subject performing one activity)
 
-`HAR_data_avgs~ contains the average values of features accross all windows for a given activity performed by a given subject (each record corresponds to one one subject performing one activity)
+`HAR_data_avgs` contains the average values of features accross all windows for a given activity performed by a given subject (each record corresponds to one one subject performing one activity)
 
 `CodeBook.md` provides further information about "HAR_data" and "HAR_data_avgs"
