@@ -70,5 +70,8 @@ HAR_data <- cbind(HAR_data,subjects)
 # create data set with the average of each variable for each activity and each subject
 HAR_data_avgs <- summarize_each(group_by(HAR_data,activity,subject),funs(mean))
 
+# write HAR_data_avgs to file (for submittion)
+write.table(HAR_data_avgs,"HAR_data_avgs.txt",row.names = FALSE)
+
 # clean up (only keep "data" and "data_avgs" in the environment)
 rm(list=ls()[!ls() %in% c("HAR_data","HAR_data_avgs")])
