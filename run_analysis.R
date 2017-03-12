@@ -1,7 +1,14 @@
 library(dplyr)
 
-# set working directory to where the "UCI HAR Dataset" directory resides
-setwd("~/Coursera/R programming/GettingAndCleaningData/")
+# the script assumes "UCI HAR Dataset" resides in the working directory.
+# if it does not, it will download and unzip the file into the current working directory
+
+if (!file.exists("UCI HAR Dataset")) { 
+  fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+  filename <- "HAR_data.zip"
+  download.file(fileURL, filename, method="curl")
+  unzip(filename) 
+}
 
 # read the Test & Train data files
 Test <- read.table("./UCI HAR Dataset/test/X_test.txt")
@@ -16,9 +23,10 @@ Features <- read.table("./UCI HAR Dataset/features.txt")
 # rename variables to match feature names
 names(X) <- Features[,2]
 
+
 # Extract only the measurements on the mean and standard deviation for each measurement.
-# find only those columns/features which contain "mean" or "std"
-selectedColumns <- grep("mean|std", Features[,2], value = TRUE)
+# find only those columns/features which contain "mean()" or "std()"
+selectedColumns <- grep("mean\\(\\)|std\\(\\)", Features[,2], value = TRUE)
 
 # select only selected columns from Test
 X <- X[,selectedColumns]
@@ -43,7 +51,7 @@ Activities <- read.table("./UCI HAR Dataset/activity_labels.txt")
 levels(y$activity) <- Activities[,2]
 
 # merge data (X) with labels (y)
-data <- cbind(X,y)
+HAR_data <- cbind(X,y)
 
 # get data on subjects
 Test_subjects <- read.table("./UCI HAR Dataset/test/subject_test.txt")
@@ -57,4 +65,10 @@ names(subjects) <- "subject"
 
 # merge subjects with X&y
 # while this may not have been explicitly required, I believe it is useful 
-data <- cbind(data,subjects)
+HAR_data <- cbind(HAR_data,subjects)
+
+# create data set with the average of each variable for each activity and each subject
+HAR_data_avgs <- summarize_each(group_by(HAR_data,activity,subject),funs(mean))
+
+# clean up (only keep "data" and "data_avgs" in the environment)
+rm(list=ls()[!ls() %in% c("HAR_data","HAR_data_avgs")])
