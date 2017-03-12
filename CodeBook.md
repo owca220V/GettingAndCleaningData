@@ -27,40 +27,44 @@ Each record comprises:
 
 # Feature Selection:
 
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix `t` to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
 Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
 
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the `f` to indicate frequency domain signals). 
 
 These signals were used to estimate variables of the feature vector for each pattern:  
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions (Features were normalized and bounded within [-1,1]).
+`-XYZ` is used to denote 3-axial signals in the X, Y and Z directions (Features were normalized and bounded within [-1,1]).
 
-* 'tBodyAcc-XYZ'
-* 'tGravityAcc-XYZ'
-* 'tBodyAccJerk-XYZ'
-* 'tBodyGyro-XYZ'
-* 'tBodyGyroJerk-XYZ'
-* 'tBodyAccMag'
-* 'tGravityAccMag'
-* 'tBodyAccJerkMag'
-* 'tBodyGyroMag'
-* 'tBodyGyroJerkMag'
-* 'fBodyAcc-XYZ'
-* 'fBodyAccJerk-XYZ'
-* 'fBodyGyro-XYZ'
-* 'fBodyAccMag'
-* 'fBodyAccJerkMag'
-* 'fBodyGyroMag'
-* 'fBodyGyroJerkMag'
+* `tBodyAcc-XYZ`
+* `tGravityAcc-XYZ`
+* `tBodyAccJerk-XYZ`
+* `tBodyGyro-XYZ`
+* `tBodyGyroJerk-XYZ`
+* `tBodyAccMag`
+* `tGravityAccMag`
+* `tBodyAccJerkMag`
+* `tBodyGyroMag`
+* `tBodyGyroJerkMag`
+* `fBodyAcc-XYZ`
+* `fBodyAccJerk-XYZ`
+* `fBodyGyro-XYZ`
+* `fBodyAccMag`
+* `fBodyAccJerkMag`
+* `fBodyGyroMag`
+* `fBodyGyroJerkMag`
 
 The set of variables that were estimated from these signals are: 
 
-* 'mean()': Mean value
-* 'std()': Standard deviation
+* `mean()`: Mean value
+* `std()`: Standard deviation
+
+The `subject` variable denotes which of the 30 subjects (experiment participants) was recorderd.
+
+The `activity` variable provides information on what activity the subject was performing (`WALKING`, `WALKING_UPSTAIRS`, `WALKING_DOWNSTAIRS`, `SITTING`, `STANDING`, `LAYING`)
 
 # Resulting data sets:
 
-'HAR_data' contains the mean and standard deviation for each measurement (each record corresponds to one observation window of one subject performing one activity)
+`HAR_data` contains the mean and standard deviation for each measurement (each record corresponds to one observation window of one subject performing one activity)
 
-'HAR_data_avgs' contains the average mean and standard deviation accross all windows for a given activity performed by a given subject (each record corresponds to one one subject performing one activity)
+`HAR_data_avgs` contains the average mean and standard deviation accross all windows for a given activity performed by a given subject (each record corresponds to one subject performing one activity)
