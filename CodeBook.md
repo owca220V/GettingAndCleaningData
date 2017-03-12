@@ -65,4 +65,4 @@ The `activity` variable provides information on what activity the subject was pe
 
 `HAR_data` contains the mean and standard deviation for each measurement (each record corresponds to one observation window of one subject performing one activity)
 
-`HAR_data_avgs` contains the average mean and standard deviation accross all windows for a given activity performed by a given subject (each record corresponds to one subject performing one activity)
+`HAR_data_avgs` contains the average values of features accross all windows for a given activity performed by a given subject (each record corresponds to one one subject performing one activity)
